@@ -1,3 +1,4 @@
+/**
 package org.bstats;
 
 import java.io.ByteArrayOutputStream;
