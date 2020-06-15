@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Toggle whether or not a player has their inventory automatically cleared when they join", usage = "/<command> <player>")
+@CommandParameters(description = "Someone has a crash item and they can't join? Well, I prefer you not use this command and make them suffer", usage = "/<command> <player>")
 public class Command_autoclear extends FreedomCommand
 {
 
@@ -29,7 +29,7 @@ public class Command_autoclear extends FreedomCommand
             plugin.lp.CLEAR_ON_JOIN.add(args[0]);
         }
 
-        msg(args[0] + " will " + (enabled ? "no longer" : "now") + " have their inventory cleared when they join.");
+        msg(args[0] + " will " + (enabled ? "no longer" : "now") + " say good bye to their inventory");
 
         return true;
     }
