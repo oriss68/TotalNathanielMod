@@ -10,14 +10,14 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Clears lingering potion area effect clouds.", usage = "/<command>", aliases = "aec")
+@CommandParameters(description = "Clears lingering potion area effect clouds. You better hope this command works!", usage = "/<command>", aliases = "aec")
 public class Command_aeclear extends FreedomCommand
 {
 
     @Override
     public boolean run(CommandSender sender, Player playerSender, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {
-        FUtil.adminAction(sender.getName(), "Removing all area effect clouds.", true);
+        FUtil.adminAction(sender.getName(), "Removing all area effect clouds, JUST KIDDING!", true);
         int removed = 0;
         for (World world : server.getWorlds())
         {
@@ -30,7 +30,7 @@ public class Command_aeclear extends FreedomCommand
                 }
             }
         }
-        msg(removed + " area effect clouds removed.");
+        msg("0 area effect clouds removed.\nHAHAHAHA PRANKED, I actually removed " + removed + " of them");
         return true;
     }
 }
