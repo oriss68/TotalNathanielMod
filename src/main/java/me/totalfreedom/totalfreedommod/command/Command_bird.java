@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import java.util.Random;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Spawns a random type of fish at your location.", usage = "/<command>")
+@CommandParameters(description = "Why the heck does this command exist?", usage = "/<command>")
 public class Command_bird extends FreedomCommand
 {
 
@@ -20,7 +20,7 @@ public class Command_bird extends FreedomCommand
     {
         Location location = playerSender.getTargetBlock(null, 15).getLocation().add(0, 1, 0);
         playerSender.getWorld().spawnEntity(location, getRandomFish());
-        msg(":goodbird:");
+        msg(":goodbird:\nCan someone tell me why this command exists?");
         return true;
     }
 
