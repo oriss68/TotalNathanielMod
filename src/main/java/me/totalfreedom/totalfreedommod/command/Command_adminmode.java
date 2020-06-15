@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.TELNET_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Denies joining of operators and only allows admins to join.", usage = "/<command> [on | off]")
+@CommandParameters(description = "Takes away the right to join to OPs", usage = "/<command> [on | off]")
 public class Command_adminmode extends FreedomCommand
 {
 
@@ -26,18 +26,18 @@ public class Command_adminmode extends FreedomCommand
         if (args[0].equalsIgnoreCase("off"))
         {
             ConfigEntry.ADMIN_ONLY_MODE.setBoolean(false);
-            FUtil.adminAction(sender.getName(), "Opening the server to all players.", true);
+            FUtil.adminAction(sender.getName(), "YAY! NOW ALL PLAYERS CAN JOIN", true);
             return true;
         }
         else if (args[0].equalsIgnoreCase("on"))
         {
             ConfigEntry.ADMIN_ONLY_MODE.setBoolean(true);
-            FUtil.adminAction(sender.getName(), "Closing the server to non-admins.", true);
+            FUtil.adminAction(sender.getName(), "Aww, why the fuck you have to limit it to just admins?", true);
             for (Player player : server.getOnlinePlayers())
             {
                 if (!isAdmin(player))
                 {
-                    player.kickPlayer("Server is now closed to non-admins.");
+                    player.kickPlayer("Server is now closed to non-admins, blame it on " + sender.getName());
                 }
             }
             return true;
