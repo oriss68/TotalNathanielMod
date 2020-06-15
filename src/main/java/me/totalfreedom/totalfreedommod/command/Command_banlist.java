@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.BOTH)
-@CommandParameters(description = "Shows all banned player names. Senior Admins may optionally use 'purge' to clear the list.", usage = "/<command> [purge]")
+@CommandParameters(description = "Shows the list of all the good people, you should put 'purge' at the end of the command", usage = "/<command> [purge]")
 public class Command_banlist extends FreedomCommand
 {
 
@@ -20,9 +20,9 @@ public class Command_banlist extends FreedomCommand
             {
                 checkRank(Rank.SENIOR_ADMIN);
 
-                FUtil.adminAction(sender.getName(), "Purging the ban list", true);
+                FUtil.adminAction(sender.getName(), "Purging the ban list, because I'm a good admin", true);
                 int amount = plugin.bm.purge();
-                msg("Purged " + amount + " player bans.");
+                msg("Purged " + amount + " player bans. You're now " + amount + " times cooler");
 
                 return true;
 
