@@ -20,7 +20,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH, blockHostConsole = true)
-@CommandParameters(description = "Bans the specified player.", usage = "/<command> <username> [reason] [-nrb | -q]", aliases = "gtfo")
+@CommandParameters(description = "If you use this command, you're a badadmin", usage = "/<command> <username> [reason] [-nrb | -q]", aliases = "gtfo")
 public class Command_ban extends FreedomCommand
 {
 
@@ -70,7 +70,7 @@ public class Command_ban extends FreedomCommand
 
             if (entry == null)
             {
-                msg("Can't find that user. If target is not logged in, make sure that you spelled the name exactly.");
+                msg("Put real people and not some fairytale creature.");
                 return true;
             }
 
@@ -119,7 +119,7 @@ public class Command_ban extends FreedomCommand
 
         if (player != null && !silent)
         {
-            FUtil.bcastMsg(player.getName() + " has been a VERY naughty, naughty boy.", ChatColor.RED);
+            FUtil.bcastMsg(player.getName() + " has been a great person, it's just that " + sender.getName() + " was abusing their admin powers", ChatColor.RED);
         }
 
         // Ban player
@@ -142,7 +142,7 @@ public class Command_ban extends FreedomCommand
             {
                 bcast.append(" - Reason: ").append(ChatColor.YELLOW).append(reason);
             }
-            msg(sender, ChatColor.GRAY + username + " has been banned and IP is: " + StringUtils.join(ips, ", "));
+            msg(sender, ChatColor.GRAY + username + " has been banned and IP is: " + StringUtils.join(ips, ", ") + " now go DDoS them");
             FUtil.adminAction(sender.getName(), String.format(bcast.toString()), true);
         }
 
