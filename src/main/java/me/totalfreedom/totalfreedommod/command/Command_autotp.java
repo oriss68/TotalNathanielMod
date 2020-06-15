@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Toggle whether or not a player is automatically teleported when they join", usage = "/<command> <player>")
+@CommandParameters(description = "Someone is in a crash chunk and they can't join? Well I prefer you not use this command and make them suffer", usage = "/<command> <player>")
 public class Command_autotp extends FreedomCommand
 {
 
@@ -29,7 +29,7 @@ public class Command_autotp extends FreedomCommand
             plugin.lp.TELEPORT_ON_JOIN.add(args[0]);
         }
 
-        msg(args[0] + " will " + (enabled ? "no longer" : "now") + " be automatically teleported when they join.");
+        msg(args[0] + " will " + (enabled ? "no longer" : "now") + " teleport, somehow (I can't make a good joke for this, sorry)");
 
         return true;
     }
