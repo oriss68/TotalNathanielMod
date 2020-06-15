@@ -14,7 +14,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.BOTH)
-@CommandParameters(description = "Allows for admins to configure guests, time, and weather of the AdminWorld, and allows for admins and guests to go to the AdminWorld.",
+@CommandParameters(description = "Run to the adminworld! You coward!",
         usage = "/<command> [guest < list | purge | add <player> | remove <player> > | time <morning | noon | evening | night> | weather <off | rain | storm>]",
         aliases = "aw")
 public class Command_adminworld extends FreedomCommand
@@ -77,19 +77,19 @@ public class Command_adminworld extends FreedomCommand
 
                     if (adminWorld == null || playerSender.getWorld() == adminWorld)
                     {
-                        msg("Going to the main world.");
+                        msg("Enabling PRO MODE");
                         playerSender.teleport(server.getWorlds().get(0).getSpawnLocation());
                     }
                     else
                     {
                         if (plugin.wm.adminworld.canAccessWorld(playerSender))
                         {
-                            msg("Going to the AdminWorld.");
+                            msg("Enabling sissy mode.");
                             plugin.wm.adminworld.sendToWorld(playerSender);
                         }
                         else
                         {
-                            msg("You don't have permission to access the AdminWorld.");
+                            msg("You don't have permission to access the AdminWorld, maybe spam the chat until you get access?");
                         }
                     }
 
@@ -101,13 +101,13 @@ public class Command_adminworld extends FreedomCommand
                     {
                         if ("list".equalsIgnoreCase(args[1]))
                         {
-                            msg("AdminWorld guest list: " + plugin.wm.adminworld.guestListToString());
+                            msg(plugin.wm.adminworld.guestListToString() + ", join me! You coward!");
                         }
                         else if ("purge".equalsIgnoreCase(args[1]))
                         {
                             assertCommandPerms(sender, playerSender);
                             plugin.wm.adminworld.purgeGuestList();
-                            FUtil.adminAction(sender.getName(), "AdminWorld guest list purged.", false);
+                            FUtil.adminAction(sender.getName(), "Now everyone is brave enough, except for me.", false);
                         }
                         else
                         {
@@ -130,11 +130,11 @@ public class Command_adminworld extends FreedomCommand
 
                             if (plugin.wm.adminworld.addGuest(player, playerSender))
                             {
-                                FUtil.adminAction(sender.getName(), "AdminWorld guest added: " + player.getName(), false);
+                                FUtil.adminAction(sender.getName(), player.getName() + ", join me! You coward!", false);
                             }
                             else
                             {
-                                msg("Could not add player to guest list.");
+                                msg("Add a real person and not some fairytale creature!");
                             }
                         }
                         else if ("remove".equals(args[1]))
@@ -142,11 +142,11 @@ public class Command_adminworld extends FreedomCommand
                             final Player player = plugin.wm.adminworld.removeGuest(args[2]);
                             if (player != null)
                             {
-                                FUtil.adminAction(sender.getName(), "AdminWorld guest removed: " + player.getName(), false);
+                                FUtil.adminAction(sender.getName(), "If I'm going to be honest " + player.getName() + " I don't like you anymore!", false);
                             }
                             else
                             {
-                                msg("Can't find guest entry for: " + args[2]);
+                                msg("Can't find guest entry for: " + args[2] + " are they a real person?");
                             }
                         }
                         else
@@ -167,11 +167,11 @@ public class Command_adminworld extends FreedomCommand
                         if (timeOfDay != null)
                         {
                             plugin.wm.adminworld.setTimeOfDay(timeOfDay);
-                            msg("AdminWorld time set to: " + timeOfDay.name());
+                            msg("Great, it's now " + timeOfDay.name() + " because of you!");
                         }
                         else
                         {
-                            msg("Invalid time of day. Can be: sunrise, noon, sunset, midnight");
+                            msg("Invalid time of day. Can be: sunrise, noon, sunset, midnight. What? You think 25:00 is a real time?");
                         }
                     }
                     else
@@ -191,11 +191,11 @@ public class Command_adminworld extends FreedomCommand
                         if (weatherMode != null)
                         {
                             plugin.wm.adminworld.setWeatherMode(weatherMode);
-                            msg("AdminWorld weather set to: " + weatherMode.name());
+                            msg("Why did you make it " + weatherMode.name() + " I prefer /aw weather off");
                         }
                         else
                         {
-                            msg("Invalid weather mode. Can be: off, rain, storm");
+                            msg("Invalid weather mode. Can be: off, rain, storm. What? You think it can rain meatballs?");
                         }
                     }
                     else
@@ -224,7 +224,7 @@ public class Command_adminworld extends FreedomCommand
         return true;
     }
 
-    // TODO: Redo this properly
+    // TODO: Redo this properly - No
     private void assertCommandPerms(CommandSender sender, Player playerSender) throws PermissionDeniedException
     {
         if (!(sender instanceof Player) || playerSender == null || !isAdmin(sender))
