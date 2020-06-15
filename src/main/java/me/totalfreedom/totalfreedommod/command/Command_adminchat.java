@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
 @CommandParameters(
-        description = "Talk privately with other administrators on the server.",
+        description = "Talk privately with other administrators, like a shy person",
         usage = "/<command> [message...]",
         aliases = "o,ac")
 public class Command_adminchat extends FreedomCommand
@@ -22,13 +22,13 @@ public class Command_adminchat extends FreedomCommand
         {
             if (senderIsConsole)
             {
-                msg("You must be in-game to toggle admin chat, it cannot be toggled via CONSOLE or Telnet.");
+                msg("Stop being a telnet pussy and join the game!");
                 return true;
             }
 
             FPlayer userinfo = plugin.pl.getPlayer(playerSender);
             userinfo.setAdminChat(!userinfo.inAdminChat());
-            msg("Toggled your admin chat " + (userinfo.inAdminChat() ? "on" : "off") + ".");
+            msg("Toggled your dumb admin chat thing " + (userinfo.inAdminChat() ? "on" : "off") + ".");
         }
         else
         {
