@@ -11,11 +11,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "You know the words - gives a campfire to everyone on the server.", usage = "/<command>")
+@CommandParameters(description = "Is mayonnaise an instrument?", usage = "/<command>")
 public class Command_campfire extends FreedomCommand
 {
 
-    public static final String CAMPFIRE_LYRICS = "Let's gather round the campfire, and sing our campfire song....";
+    public static final String CAMPFIRE_LYRICS = "Let's gather round the campfire, and sing our campfire song our C-A-M-P-F-I-R-E S-O-N-G song... and I'm not extending this";
 
     @Override
     public boolean run(final CommandSender sender, final Player playerSender, final Command cmd, final String commandLabel, final String[] args, final boolean senderIsConsole)
