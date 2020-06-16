@@ -14,7 +14,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 
 @CommandPermissions(level = Rank.NON_OP, source = SourceType.BOTH)
-@CommandParameters(description = "Show all commands for all server plugins.", usage = "/<command>", aliases = "cmdlist")
+@CommandParameters(description = "You know /help exists right?", usage = "/<command>", aliases = "cmdlist")
 public class Command_commandlist extends FreedomCommand
 {
 
