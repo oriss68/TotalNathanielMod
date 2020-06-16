@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Block all commands for everyone on the server, or a specific player.", usage = "/<command> <-a | purge | <player>>", aliases = "blockcommands,blockcommand,bc,bcmd")
+@CommandParameters(description = "Become a badadmin and block commands for no reason!", usage = "/<command> <-a | purge | <player>>", aliases = "blockcommands,blockcommand,bc,bcmd")
 public class Command_blockcmd extends FreedomCommand
 {
 
@@ -23,7 +23,7 @@ public class Command_blockcmd extends FreedomCommand
 
         if (args[0].equals("purge"))
         {
-            FUtil.adminAction(sender.getName(), "Unblocking commands for all players", true);
+            FUtil.adminAction(sender.getName(), "I unblocked all of your commands! I should get Owner", true);
             int counter = 0;
             for (Player player : server.getOnlinePlayers())
             {
@@ -34,13 +34,13 @@ public class Command_blockcmd extends FreedomCommand
                     playerdata.setCommandsBlocked(false);
                 }
             }
-            msg("Unblocked commands for " + counter + " players.");
+            msg("Unblocked commands for " + counter + " players.\nYou are now " + counter + " times cooler");
             return true;
         }
 
         if (args[0].equals("-a"))
         {
-            FUtil.adminAction(sender.getName(), "Blocking commands for all non-admins", true);
+            FUtil.adminAction(sender.getName(), "HAHAHA I'M A BADADMIN I BLOCKED ALL OF YOUR GUYS COMMANDS", true);
             int counter = 0;
             for (Player player : server.getOnlinePlayers())
             {
@@ -51,10 +51,10 @@ public class Command_blockcmd extends FreedomCommand
 
                 counter += 1;
                 plugin.pl.getPlayer(player).setCommandsBlocked(true);
-                msg(player, "Your commands have been blocked by an admin.", ChatColor.RED);
+                msg(player, "Your commands have been blocked by a badadmin.", ChatColor.RED);
             }
 
-            msg("Blocked commands for " + counter + " players.");
+            msg("Blocked commands for " + counter + " players.\nYou now have " + counter + " players who want to suspend you!");
             return true;
         }
 
@@ -66,18 +66,12 @@ public class Command_blockcmd extends FreedomCommand
             return true;
         }
 
-        if (isAdmin(player))
-        {
-            msg(player.getName() + " is an admin, and cannot have their commands blocked.");
-            return true;
-        }
-
         FPlayer playerdata = plugin.pl.getPlayer(player);
 
         playerdata.setCommandsBlocked(!playerdata.allCommandsBlocked());
 
-        FUtil.adminAction(sender.getName(), (playerdata.allCommandsBlocked() ? "B" : "Unb") + "locking all commands for " + player.getName(), true);
-        msg((playerdata.allCommandsBlocked() ? "B" : "Unb") + "locked all commands.");
+        FUtil.adminAction(sender.getName(), "Because I am a " (playerdata.allCommandsBlocked() ? "bad" : "good") + "admin I'm " + (playerdata.allCommandsBlocked() ? "B" : "Unb") + "locking all commands for " + player.getName(), true);
+        msg((playerdata.allCommandsBlocked() ? "B" : "Unb") + "locked all commands, you " + (playerdata.allCommandsBlocked() ? "bad" : "good") + "admin");
 
         return true;
     }
