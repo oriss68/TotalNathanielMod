@@ -7,9 +7,12 @@ import java.util.List;
 import me.totalfreedom.totalfreedommod.rank.Rank;
 import me.totalfreedom.totalfreedommod.util.FUtil;
 import org.apache.commons.lang.StringUtils;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.GameMode;
 import org.bukkit.potion.PotionEffectType;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.BOTH)

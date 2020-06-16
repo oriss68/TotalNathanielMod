@@ -33,8 +33,8 @@ public class Command_jumppads extends FreedomCommand
         {
             if (args[0].equalsIgnoreCase("info"))
             {
-                msg("Jumppads: " + (plugin.jp.players.get(playerSender).isOn() ? "Enabled" : "Disabled"), ChatColor.BLUE);
-                msg("Sideways: " + (plugin.jp.players.get(playerSender) == Jumppads.JumpPadMode.NORMAL_AND_SIDEWAYS ? "Enabled" : "Disabled"), ChatColor.BLUE);
+                msg("Jumppads: " + (plugin.jp.players.get(playerSender).isOn() ? "Enabled, you know slime blocks exist right?" : "Disabled, I'm guessing you realized slime blocks exist"), ChatColor.BLUE);
+                msg("Sideways: " + (plugin.jp.players.get(playerSender) == Jumppads.JumpPadMode.NORMAL_AND_SIDEWAYS ? "Enabled, now you can go sideways. You should consider using a piston" : "Disabled, thanks for realizing pistons exists"), ChatColor.BLUE);
                 return true;
             }
 
@@ -42,20 +42,20 @@ public class Command_jumppads extends FreedomCommand
             {
                 if(plugin.jp.players.get(playerSender) == Jumppads.JumpPadMode.OFF)
                 {
-                    msg("Your jumppads are already disabled.");
+                    msg("Your jumppads are already disabled. Duh.");
                     return true;
                 }
-                msg("Disabled your jumppads.", ChatColor.GRAY);
+                msg("Disabled your jumppads, I'm guessing you realized slime blocks exist", ChatColor.GRAY);
                 plugin.jp.players.put(playerSender, Jumppads.JumpPadMode.OFF);
             }
             else
             {
                 if(plugin.jp.players.get(playerSender) != Jumppads.JumpPadMode.OFF)
                 {
-                    msg("Your jumppads are already enabled.");
+                    msg("Your jumppads are already enabled. Duh.");
                     return true;
                 }
-                msg("Enabled your jumpppads.", ChatColor.GRAY);
+                msg("Enabled your jumpppads. You should consider using a piston", ChatColor.GRAY);
                 plugin.jp.players.put(playerSender, Jumppads.JumpPadMode.MADGEEK);
             }
         }
@@ -63,7 +63,7 @@ public class Command_jumppads extends FreedomCommand
         {
             if (plugin.jp.players.get(playerSender) == Jumppads.JumpPadMode.OFF)
             {
-                msg("Your jumppads are currently disabled, please enable them before changing jumppads settings.");
+                msg("Your jumppads are currently disabled, please enable them before changing jumppads settings. Or just use slime blocks.");
                 return true;
             }
 
@@ -73,20 +73,20 @@ public class Command_jumppads extends FreedomCommand
                 {
                     if(plugin.jp.players.get(playerSender) == Jumppads.JumpPadMode.MADGEEK)
                     {
-                        msg("Your jumppads are already set to normal mode.");
+                        msg("Your jumppads are already set to normal mode. Maybe you should start using slime blocks");
                         return true;
                     }
-                    msg("Set Jumppads mode to: Normal", ChatColor.GRAY);
+                    msg("Set Jumppads mode to: Normal. You should start using slime blocks", ChatColor.GRAY);
                     plugin.jp.players.put(playerSender, Jumppads.JumpPadMode.MADGEEK);
                 }
                 else
                 {
                     if(plugin.jp.players.get(playerSender) == Jumppads.JumpPadMode.NORMAL_AND_SIDEWAYS)
                     {
-                        msg("Your jumppads are already set to normal and sideways mode.");
+                        msg("Your jumppads are already set to normal and sideways mode. Just use slime and piston blocks....");
                         return true;
                     }
-                    msg("Set Jumppads mode to: Normal and Sideways", ChatColor.GRAY);
+                    msg("Set Jumppads mode to: Normal and Sideways. Just use slime and piston blocks....", ChatColor.GRAY);
                     plugin.jp.players.put(playerSender, Jumppads.JumpPadMode.NORMAL_AND_SIDEWAYS);
                 }
             }
