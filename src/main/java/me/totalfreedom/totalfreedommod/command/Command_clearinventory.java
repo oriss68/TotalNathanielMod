@@ -25,7 +25,7 @@ public class Command_clearinventory extends FreedomCommand
             }
 
             playerSender.getInventory().clear();
-            msg("Your inventory has been cleared.");
+            msg("GOOD BYE INVENTORY!");
         }
         else
         {
@@ -33,12 +33,12 @@ public class Command_clearinventory extends FreedomCommand
             {
                 if (args[0].equals("-a"))
                 {
-                    FUtil.adminAction(sender.getName(), "Clearing everyone's inventory", true);
+                    FUtil.adminAction(sender.getName(), "NO MORE ITEMS FOR YOU!", true);
                     for (Player player : server.getOnlinePlayers())
                     {
                         player.getInventory().clear();
                     }
-                    msg("Sucessfully cleared everyone's inventory.");
+                    msg("Everyone will be kissing their items goodbye!");
                 }
                 else
                 {
@@ -51,8 +51,8 @@ public class Command_clearinventory extends FreedomCommand
                     }
 
                     player.getInventory().clear();
-                    msg("Cleared " + player.getName() + "'s inventory.");
-                    player.sendMessage(sender.getName() + " has cleared your inventory.");
+                    msg("Cleared " + player.getName() + "'s inventory, now " + player.getName() + " will file an abuse report on you");
+                    player.sendMessage(sender.getName() + " has cleared your inventory, maybe it's time to file an admin abuse report");
                 }
             }
             else
