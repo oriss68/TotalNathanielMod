@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.BOTH)
-@CommandParameters(description = "Shows the amount of coins you have or another player", usage = "/<command> [playername]")
+@CommandParameters(description = "This is how poor you are", usage = "/<command> [playername]")
 public class Command_coins extends FreedomCommand
 {
 
@@ -19,7 +19,7 @@ public class Command_coins extends FreedomCommand
     {
         if (!ConfigEntry.SHOP_ENABLED.getBoolean())
         {
-            msg("The shop is currently disabled!", ChatColor.RED);
+            msg("The shop is currently disabled! Yell at the owner to enable it!", ChatColor.RED);
             return true;
         }
         Player p;
@@ -40,7 +40,7 @@ public class Command_coins extends FreedomCommand
         {
             if (senderIsConsole)
             {
-                msg(prefix + ChatColor.RED + "You are not a player, use /coins <playername>");
+                msg(prefix + ChatColor.RED + "Stop being a telnet pussy and join the game!");
                 return true;
             }
             else
@@ -49,7 +49,7 @@ public class Command_coins extends FreedomCommand
             }
         }
         ShopData sd = plugin.sh.getData(p);
-        msg(prefix + ChatColor.GREEN + (args.length > 0 ? p.getName() + " has " : "You have ") + ChatColor.RED + sd.getCoins() + ChatColor.GREEN + " coins.");
+        msg(prefix + ChatColor.GREEN + (args.length > 0 ? p.getName() + " has " : "You have ") + ChatColor.RED + sd.getCoins() + ChatColor.GREEN + " coins. " + (args.length > 0 ? p.getName() + "they" : "you") + " are poor.");
         return true;
     }
 }
