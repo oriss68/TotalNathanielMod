@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Essentials Interface Command - Set your nickname to a certain color.", usage = "/<command> <color>")
+@CommandParameters(description = "Essentials Interface Command - Set your nickname to a certain color. Or, you could use /nick, you know", usage = "/<command> <color>")
 public class Command_colorme extends FreedomCommand
 {
 
@@ -44,7 +44,7 @@ public class Command_colorme extends FreedomCommand
 
         if (color == null)
         {
-            msg("Invalid color: " + needle + " - Use \"/colorme list\" to list colors.");
+            msg("What kind of color is that?: " + needle + " - Use \"/colorme list\" to list colors.");
             return true;
         }
 
@@ -52,7 +52,7 @@ public class Command_colorme extends FreedomCommand
 
         plugin.esb.setNickname(sender.getName(), newNick);
 
-        msg("Your nickname is now: " + newNick);
+        msg("Your nickname is now: " + newNick + "\nYou could use /nick right?");
 
         return true;
     }
