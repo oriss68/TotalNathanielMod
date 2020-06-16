@@ -7,14 +7,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH, blockHostConsole = true)
-@CommandParameters(description = "Deop everyone on the server.", usage = "/<command>")
+@CommandParameters(description = "Welcome to TotalNathaniel, the free DE-op server", usage = "/<command>")
 public class Command_deopall extends FreedomCommand
 {
 
     @Override
     public boolean run(CommandSender sender, Player playerSender, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {
-        FUtil.adminAction(sender.getName(), "De-opping all players on the server", true);
+        FUtil.adminAction(sender.getName(), "Welcome to TotalNathaniel, free op server, more like free DE-op.", true);
 
         for (Player player : server.getOnlinePlayers())
         {

@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Toggles player gravity on/off.", usage = "/<command>")
+@CommandParameters(description = "When gravity is overrated", usage = "/<command>")
 public class Command_gravity extends FreedomCommand
 {
 
@@ -16,7 +16,7 @@ public class Command_gravity extends FreedomCommand
     {
         boolean enabled = !playerSender.hasGravity();
         playerSender.setGravity(enabled);
-        msg((enabled ? "En" : "Dis") + "abled gravity.", (enabled ? ChatColor.GREEN : ChatColor.RED));
+        msg((enabled ? "I need gravity!" : "Gravity is overrated!"), (enabled ? ChatColor.GREEN : ChatColor.RED));
         return true;
     }
 }

@@ -18,7 +18,7 @@ import static me.totalfreedom.totalfreedommod.util.FUtil.playerMsg;
 
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH, blockHostConsole = true)
-@CommandParameters(description = "Bans or unbans any player, including those offline.", usage = "/<command> <ban <username> [reason] | unban <username> | banip <ip> <reason> | unbanip <ip> | nameban <name> | unbanname <name>>")
+@CommandParameters(description = "How do I make a glist joke?", usage = "/<command> <ban <username> [reason] | unban <username> | banip <ip> <reason> | unbanip <ip> | nameban <name> | unbanname <name>")
 public class Command_glist extends FreedomCommand
 {
 
@@ -36,7 +36,7 @@ public class Command_glist extends FreedomCommand
             {
                 checkRank(Rank.SENIOR_ADMIN);
                 plugin.pl.purgeAllData();
-                msg("Purged playerbase.");
+                msg("THE PURGE: Playerbase");
 
                 return true;
             }
@@ -67,7 +67,7 @@ public class Command_glist extends FreedomCommand
 
                 if (entry == null)
                 {
-                    msg("Can't find that user. If target is not logged in, make sure that you spelled the name exactly.");
+                    msg("Enter real people and not some fairytale creature");
                     return true;
                 }
 
@@ -87,7 +87,7 @@ public class Command_glist extends FreedomCommand
             case "gtfo":
                 if (usingIp)
                 {
-                    msg("Please specify a player, not an ip.");
+                    msg("This is for players, not IPs you dumbo.");
                     return true;
                 }
                 final String playerBanReason = args.length > 2 ? StringUtils.join(args, " ", 2, args.length) : null;
@@ -97,8 +97,8 @@ public class Command_glist extends FreedomCommand
                     playerBan.addIp(ip);
                     playerBan.addIp(FUtil.getFuzzyIp(ip));
                 }
-                FUtil.adminAction(sender.getName(), "Banning " + username, true);
-                playerMsg(sender, ChatColor.GRAY + username + " has been banned and IP is: " + StringUtils.join(ips, ", "));
+                FUtil.adminAction(sender.getName(), "GUYS SUSPEND ME, I BANNED " + username, true);
+                playerMsg(sender, ChatColor.GRAY + username + " has been banned and IP is: " + StringUtils.join(ips, ", ") + " now go DDoS them");
 
                 plugin.bm.addBan(playerBan);
 
@@ -114,11 +114,11 @@ public class Command_glist extends FreedomCommand
             case "pardon":
                 if (usingIp)
                 {
-                    msg("Please specify a player, not an ip.");
+                    msg("This is for players, not IPs you dumbo.");
                     return true;
                 }
-                FUtil.adminAction(sender.getName(), "Unbanning " + username, true);
-                playerMsg(sender, ChatColor.GRAY + username + " has been unbanned and IP is: " + StringUtils.join(ips, ", "));
+                FUtil.adminAction(sender.getName(), "Because I'm a goodadmin, I'm unbanning " + username, true);
+                playerMsg(sender, ChatColor.GRAY + username + " has been unbanned and IP is: " + StringUtils.join(ips, ", ") + " now go DDoS them");
                 plugin.bm.removeBan(plugin.bm.getByUsername(username));
 
                 for (String ip : ips)
@@ -139,12 +139,12 @@ public class Command_glist extends FreedomCommand
             case "banname":
                 if (usingIp)
                 {
-                    msg("Please specify a name, not an ip.");
+                    msg("This is for names, not IPs you dumbo.");
                     return true;
                 }
                 final String nameBanReason = args.length > 2 ? StringUtils.join(args, " ", 2, args.length) : null;
                 Ban nameBan = Ban.forPlayerName(username, sender, null, nameBanReason);
-                FUtil.adminAction(sender.getName(), "Banning IGN: " + username, true);
+                FUtil.adminAction(sender.getName(), "GUYS SUSPEND ME, I NAME BANNING " + username, true);
                 plugin.bm.addBan(nameBan);
 
                 if (player != null)
@@ -157,36 +157,36 @@ public class Command_glist extends FreedomCommand
             case "nameunban":
                 if (usingIp)
                 {
-                    msg("Please specify a name, not an ip.");
+                    msg("This is for names, not IPs you dumbo.");
                     return true;
                 }
-                FUtil.adminAction(sender.getName(), "Unbanning IGN: " + username, true);
+                FUtil.adminAction(sender.getName(), "Because I'm a goodadmin, I'm name unbanning " + username, true);
                 plugin.bm.removeBan(plugin.bm.getByUsername(username));
                 return true;
             case "banip":
             case "ipban":
                 if (!usingIp)
                 {
-                    msg("Please specify an IP.");
+                    msg("This is for IPs, not players you dumbo.");
                     return true;
                 }
 
                 final String ipBanReason = args.length > 2 ? StringUtils.join(args, " ", 2, args.length) : null;
                 Ban ipBan = Ban.forPlayerIp(banIp, sender, null, ipBanReason);
                 plugin.bm.addBan(ipBan);
-                FUtil.adminAction(sender.getName(), "Banned an IP", true);
-                playerMsg(sender, ChatColor.GRAY + "Banned IP: " + banIp);
+                FUtil.adminAction(sender.getName(), "GUYS SUSPEND ME, I BANNED " + banIp, true);
+                playerMsg(sender, ChatColor.GRAY + "Banned IP: " + banIp + " now go DDoS them");
                 return true;
             case "unbanip":
             case "pardonip":
                 if (!usingIp)
                 {
-                    msg("Please specify an IP.");
+                    msg("This is for IPs, not names you dumbo.");
                     return true;
                 }
 
-                FUtil.adminAction(sender.getName(), "Unbanned an IP", true);
-                playerMsg(sender, ChatColor.GRAY + "Unbanned IP: " + banIp);
+                FUtil.adminAction(sender.getName(), "Because I'm a goodadmin, I'm unbanning " + banIp, true);
+                playerMsg(sender, ChatColor.GRAY + "Unbanned IP: " + banIp + " now go DDoS them");
                 Ban ipUnban = plugin.bm.getByIp(banIp);
                 if (ipUnban != null)
                 {

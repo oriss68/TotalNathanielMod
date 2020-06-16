@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.BOTH)
-@CommandParameters(description = "Makes random sounds to everyone online.", usage = "/<command>")
+@CommandParameters(description = "Ear rape, basically", usage = "/<command>")
 public class Command_deafen extends FreedomCommand
 {
 

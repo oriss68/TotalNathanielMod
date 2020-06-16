@@ -11,7 +11,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Eject players that are riding you.", usage = "/<command>")
+@CommandParameters(description = "Use this command if you hate piggyback rides.", usage = "/<command>")
 public class Command_eject extends FreedomCommand
 {
 
@@ -28,11 +28,11 @@ public class Command_eject extends FreedomCommand
 
         if (names.isEmpty())
         {
-            msg("Nothing was ejected.", ChatColor.GREEN);
+            msg("Nothing was ejected. Do you have schizophrenia?", ChatColor.GREEN);
             return true;
         }
 
-        msg("Ejecting " + StringUtils.join(names, ", ") + ".", ChatColor.GREEN);
+        msg("I HATE PIGGYBACK RIDES " + StringUtils.join(names, ", ") + ".", ChatColor.GREEN);
         playerSender.eject();
 
         return true;

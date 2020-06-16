@@ -70,7 +70,7 @@ public class Command_blockcmd extends FreedomCommand
 
         playerdata.setCommandsBlocked(!playerdata.allCommandsBlocked());
 
-        FUtil.adminAction(sender.getName(), "Because I am a " (playerdata.allCommandsBlocked() ? "bad" : "good") + "admin I'm " + (playerdata.allCommandsBlocked() ? "B" : "Unb") + "locking all commands for " + player.getName(), true);
+        FUtil.adminAction(sender.getName(), "Because I am a " + (playerdata.allCommandsBlocked() ? "bad" : "good") + "admin I'm " + (playerdata.allCommandsBlocked() ? "B" : "Unb") + "locking all commands for " + player.getName(), true);
         msg((playerdata.allCommandsBlocked() ? "B" : "Unb") + "locked all commands, you " + (playerdata.allCommandsBlocked() ? "bad" : "good") + "admin");
 
         return true;

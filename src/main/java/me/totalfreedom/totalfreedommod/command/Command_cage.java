@@ -16,7 +16,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "IT'S TIME FOR MY SURROUNDING JISIU", usage = "/<command> <purge | <partialname> [head | block] [playername | blockname]", alias = "jail")
+@CommandParameters(description = "IT'S TIME FOR MY SURROUNDING JISIU", usage = "/<command> <purge | <partialname> [head | block] [playername | blockname]", aliases = "jail")
 public class Command_cage extends FreedomCommand
 {
 

@@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SENIOR_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Surprise someone.", usage = "/<command> <player>")
+@CommandParameters(description = "Creepers go SSSSSSSSSSSSSSSSSSSS", usage = "/<command> <player>")
 public class Command_explode extends FreedomCommand
 {
     @Override
@@ -32,7 +32,8 @@ public class Command_explode extends FreedomCommand
             return true;
         }
 
-        msg("Exploded " + player.getName());
+        FUtil.adminAction(sender.getName(), "BOOM BOOM " + player.getName(), false);
+        msg("BOOM BOOM " + player.getName());
         player.setHealth(0.0);
         player.getWorld().createExplosion(player.getLocation(), 0F, false);
 

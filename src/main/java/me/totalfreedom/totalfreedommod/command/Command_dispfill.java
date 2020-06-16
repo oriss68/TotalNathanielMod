@@ -16,7 +16,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Fill nearby dispensers with a set of items of your choice.", usage = "/<command> <radius> <comma,separated,items>")
+@CommandParameters(description = "Lets you shove items down dispensers for no good reason", usage = "/<command> <radius> <comma,separated,items>")
 public class Command_dispfill extends FreedomCommand
 {
 
@@ -33,7 +33,7 @@ public class Command_dispfill extends FreedomCommand
             }
             catch (NumberFormatException ex)
             {
-                sender.sendMessage("Invalid radius.");
+                sender.sendMessage("Invalid radius, do you serious think I can parse that?");
                 return true;
             }
 
@@ -50,7 +50,7 @@ public class Command_dispfill extends FreedomCommand
                 }
                 else
                 {
-                    sender.sendMessage("Skipping invalid item: " + searchItem);
+                    sender.sendMessage("Stop putting imaginary items like " + searchItem + " and put real stuff!");
                 }
             }
 
@@ -70,7 +70,7 @@ public class Command_dispfill extends FreedomCommand
                         {
                             if (targetBlock.getType().equals(Material.DISPENSER))
                             {
-                                sender.sendMessage("Filling dispenser @ " + FUtil.formatLocation(targetBlock.getLocation()));
+                                sender.sendMessage("FILL FILL FILL FILL FILL FILL FILL FILL FILL @ " + FUtil.formatLocation(targetBlock.getLocation()));
                                 setDispenserContents(targetBlock, itemsArray);
                                 affected++;
                             }
@@ -79,7 +79,7 @@ public class Command_dispfill extends FreedomCommand
                 }
             }
 
-            sender.sendMessage("Done. " + affected + " dispenser(s) filled.");
+            sender.sendMessage("Done. " + affected + " dispenser(s) filled. The dispenser(s) don't like that");
         }
         else
         {

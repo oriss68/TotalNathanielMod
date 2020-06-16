@@ -16,7 +16,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Enchant items.", usage = "/<command> <list | addall | reset | add <name> [level] | remove <name>>")
+@CommandParameters(description = "Enchant stuff, enchanting tables exist you know.", usage = "/<command> <list | addall | reset | add <name> [level] | remove <name>>")
 public class Command_enchant extends FreedomCommand
 {
 
@@ -32,7 +32,7 @@ public class Command_enchant extends FreedomCommand
 
         if (item == null || item.getType() == Material.AIR)
         {
-            msg("You have to hold an item to enchant it");
+            msg("You can't enchant your hand! Hold something to enchant it, dumbass.");
             return true;
         }
 
@@ -40,7 +40,7 @@ public class Command_enchant extends FreedomCommand
         {
             boolean has_enchantments = false;
 
-            StringBuilder possible_ench = new StringBuilder("Possible enchantments for held item: ");
+            StringBuilder possible_ench = new StringBuilder("Not cursed enchantments: ");
             for (Enchantment ench : Enchantment.values())
             {
                 if (ench.canEnchantItem(item))
@@ -72,11 +72,11 @@ public class Command_enchant extends FreedomCommand
                 }
                 catch (Exception ex)
                 {
-                    msg("Could not add enchantment: " + ench.getName());
+                    msg("Could not add enchantment: " + ench.getName() + ". Probably because you believe in farrytale enchantments");
                 }
             }
 
-            msg("Added all possible enchantments for this item.");
+            msg("All enchants, will be on this sword and stuff!");
         }
         else if (args[0].equalsIgnoreCase("reset"))
         {
@@ -85,7 +85,7 @@ public class Command_enchant extends FreedomCommand
                 item.removeEnchantment(ench);
             }
 
-            msg("Removed all enchantments.");
+            msg("GOOD BYE ENCHANTMENTS");
         }
         else
         {
@@ -106,7 +106,7 @@ public class Command_enchant extends FreedomCommand
 
             if (ench == null)
             {
-                msg(args[1] + " is an invalid enchantment for the held item. Type \"/enchant list\" for valid enchantments for this item.");
+                msg("You seriously tried to add " + args[1] + " to this item? Do you even Minecraft?");
                 return true;
             }
 
@@ -114,7 +114,7 @@ public class Command_enchant extends FreedomCommand
             {
                 if (!ench.canEnchantItem(item) && !ConfigEntry.ALLOW_UNSAFE_ENCHANTMENTS.getBoolean())
                 {
-                    msg("Can't use this enchantment on held item.");
+                    msg("You seriously tried to add " + args[1] + " to this item? Do you even Minecraft?");
                     return true;
                 }
                 int level = ench.getMaxLevel();
@@ -133,7 +133,7 @@ public class Command_enchant extends FreedomCommand
                     }
                     catch (NumberFormatException ex)
                     {
-                        msg("\"" + args[2] + "\" is not a valid number", ChatColor.RED);
+                        msg("Bruh, that's not even a valid number", ChatColor.RED);
                         return true;
                     }
                 }
@@ -146,13 +146,13 @@ public class Command_enchant extends FreedomCommand
                     item.addUnsafeEnchantment(ench, level);
                 }
 
-                msg("Added enchantment: " + ench.getName());
+                msg("Okay fine, you can have " + ench.getName() + " on your... whatever.");
             }
             else if (args[0].equals("remove"))
             {
                 item.removeEnchantment(ench);
 
-                msg("Removed enchantment: " + ench.getName());
+                msg("So you changed your mind and don't want " + ench.getName() + "? Make up your mind already!");
             }
         }
 

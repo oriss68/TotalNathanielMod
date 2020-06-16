@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Toggle LibsDisguises for everyone online.", usage = "/<command>", aliases = "dtoggle")
+@CommandParameters(description = "YOU NO DISGUISE", usage = "/<command>", aliases = "dtoggle")
 public class Command_disguisetoggle extends FreedomCommand
 {
 
@@ -17,11 +17,11 @@ public class Command_disguisetoggle extends FreedomCommand
     {
         if (!plugin.ldb.isEnabled())
         {
-            msg("LibsDisguises is not enabled.");
+            msg("Get LibsDisguises you loser.");
             return true;
         }
 
-        FUtil.adminAction(sender.getName(), (BlockedDisguises.disabled ? "Enabling" : "Disabling") + " disguises", false);
+        FUtil.adminAction(sender.getName(), (BlockedDisguises.disabled ? "HELLO" : "GOODBYE") + " LIBSDISGUISES", false);
 
         if (plugin.ldb.isDisguisesEnabled())
         {
@@ -33,7 +33,7 @@ public class Command_disguisetoggle extends FreedomCommand
             plugin.ldb.setDisguisesEnabled(true);
         }
 
-        msg("Disguises are now " + (BlockedDisguises.disabled ? "disabled." : "enabled."));
+        msg("People are now saying " + (BlockedDisguises.disabled ? "goodbye" : "hello") + " to LibsDisguises");
 
         return true;
     }

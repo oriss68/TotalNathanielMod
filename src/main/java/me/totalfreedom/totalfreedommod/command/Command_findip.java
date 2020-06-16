@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Shows all IPs registered to a player", usage = "/<command> <player>", aliases = "showip,listip")
+@CommandParameters(description = "Shows all IPs registered to a player, great for DDoSing them.", usage = "/<command> <player>", aliases = "showip,listip")
 public class Command_findip extends FreedomCommand
 {
 
@@ -28,7 +28,7 @@ public class Command_findip extends FreedomCommand
             return true;
         }
 
-        msg("Player IPs: " + StringUtils.join(plugin.pl.getData(player).getIps(), ", "));
+        msg("Player IPs: " + StringUtils.join(plugin.pl.getData(player).getIps(), ", \nNow you can DDoS them"));
 
         return true;
     }

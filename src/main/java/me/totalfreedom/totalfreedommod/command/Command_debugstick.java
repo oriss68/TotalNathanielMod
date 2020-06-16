@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Get a stick of happiness.", usage = "/<command>")
+@CommandParameters(description = "You know you could just do /i debugstick, right?", usage = "/<command>")
 public class Command_debugstick extends FreedomCommand
 {
 
@@ -30,6 +30,7 @@ public class Command_debugstick extends FreedomCommand
         itemMeta.setLore(lore);
         itemStack.setItemMeta(itemMeta);
         playerSender.getInventory().addItem(itemStack);
+        msg("You know you could just do /i debugstick right?");
         return true;
     }
 }

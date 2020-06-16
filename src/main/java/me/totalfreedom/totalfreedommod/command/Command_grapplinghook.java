@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Obtain a grappling hook", usage = "/<command>")
+@CommandParameters(description = "Obtain a grappling hook, provided that you are not poor", usage = "/<command>")
 public class Command_grapplinghook extends FreedomCommand
 {
 
@@ -18,11 +18,11 @@ public class Command_grapplinghook extends FreedomCommand
         if (plugin.sh.getData(playerSender).hasItem(ShopItem.GRAPPLING_HOOK))
         {
             playerSender.getInventory().addItem(plugin.sh.getGrapplingHook());
-            msg("You have been given a Grappling Hook", ChatColor.GREEN);
+            msg("You have been given a Grappling Hook, now you can flex", ChatColor.GREEN);
         }
         else
         {
-            msg("You do not own a Grappling Hook! Purchase one from the shop.", ChatColor.RED);
+            msg("You're too poor to get a Grappling Hook loser.", ChatColor.RED);
         }
         return true;
     }

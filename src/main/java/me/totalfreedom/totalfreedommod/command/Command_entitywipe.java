@@ -13,7 +13,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Remove various server entities that may cause lag, such as dropped items, minecarts, and boats.", usage = "/<command> [name | -a]", aliases = "ew,rd")
+@CommandParameters(description = "Admins use this command too much", usage = "/<command> [name | -a]", aliases = "ew,rd")
 public class Command_entitywipe extends FreedomCommand
 {
 
@@ -37,13 +37,13 @@ public class Command_entitywipe extends FreedomCommand
                 }
                 catch (Exception e)
                 {
-                    msg(args[0] + " is not a valid entity type.", ChatColor.RED);
+                    msg(args[0] + " is not a valid entity type. Put real entities and not some fairytale creatures", ChatColor.RED);
                     return true;
                 }
 
                 if (!getAllEntities().contains(type))
                 {
-                    msg(FUtil.formatName(type.name()) + " is an entity, however: it is a mob.", ChatColor.RED);
+                    msg(FUtil.formatName(type.name()) + " is an entity, however: it is a mob. So, that means you're screwed.", ChatColor.RED);
                     return true;
                 }
             }
@@ -54,7 +54,7 @@ public class Command_entitywipe extends FreedomCommand
             entityName = FUtil.formatName(type.name());
         }
 
-        FUtil.adminAction(sender.getName(), "Purging all " + (type != null ? entityName + "s" : "entities"), true);
+        FUtil.adminAction(sender.getName(), "Purging all " + (type != null ? entityName + "s" : "entities") + " I use this command too much....", true);
         int count;
         if (type != null)
         {
@@ -64,7 +64,7 @@ public class Command_entitywipe extends FreedomCommand
         {
             count = plugin.ew.wipeEntities(bypassBlacklist);
         }
-        msg(count + " " + (type != null ? entityName : "entities") + FUtil.showS(count) + " removed.");
+        msg(count + " " + (type != null ? entityName : "entities") + FUtil.showS(count) + " removed. Why not just kill them with a sword?");
         return true;
     }
 

@@ -20,7 +20,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 @CommandPermissions(level = Rank.SENIOR_ADMIN, source = SourceType.ONLY_CONSOLE, blockHostConsole = true)
-@CommandParameters(description = "Sends the specified player to their doom.", usage = "/<command> <playername> [reason]")
+@CommandParameters(description = "OMAE WA MOU SHINDEIRU", usage = "/<command> <playername> [reason]")
 public class Command_doom extends FreedomCommand
 {
 
@@ -40,8 +40,8 @@ public class Command_doom extends FreedomCommand
             return true;
         }
 
-        FUtil.adminAction(sender.getName(), "Casting oblivion over " + player.getName(), true);
-        FUtil.bcastMsg(player.getName() + " will be completely obliviated!", ChatColor.RED);
+        FUtil.adminAction(sender.getName(), "OMAE WA MOU SHINDEIRU", true);
+        FUtil.adminAction(player.getName(), "NANI?", true);
 
         final String ip = player.getAddress().getAddress().getHostAddress().trim();
 
@@ -49,7 +49,7 @@ public class Command_doom extends FreedomCommand
         Admin admin = getAdmin(player);
         if (admin != null)
         {
-            FUtil.adminAction(sender.getName(), "Removing " + player.getName() + " from the admin list", true);
+            FUtil.adminAction(sender.getName(), "Everyone! " + player.getName() + " has been suspended! Crab rave!", true);
             admin.setActive(false);
             plugin.al.save(admin);
             plugin.al.updateTables();
@@ -122,7 +122,7 @@ public class Command_doom extends FreedomCommand
             {
                 // message
                 FUtil.adminAction(sender.getName(), "Banning " + player.getName(), true);
-                msg(sender, player.getName() + " has been banned and IP is: " + ip);
+                msg(sender, player.getName() + " has been banned and IP is: " + ip + ", now go DDoS them");
 
                 // generate explosion
                 player.getWorld().createExplosion(player.getLocation(), 0F, false);;

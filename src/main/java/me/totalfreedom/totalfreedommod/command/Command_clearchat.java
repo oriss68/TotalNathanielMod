@@ -63,7 +63,7 @@ public class Command_clearchat extends FreedomCommand
         }
         else
         {
-            msg("Only Master Builders, admins, and players with verification enabled can opt-out of clear chat.", ChatColor.RED);
+            msg("Only cool people can opt-out of clear chat.", ChatColor.RED);
         }
 
         return true;

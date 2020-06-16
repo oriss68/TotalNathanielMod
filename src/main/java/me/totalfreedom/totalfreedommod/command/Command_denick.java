@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Essentials Interface Command - Remove the nickname of all players on the server.", usage = "/<command>")
+@CommandParameters(description = "GOOD BYE NICKNAMES", usage = "/<command>")
 public class Command_denick extends FreedomCommand
 {
 
@@ -16,11 +16,11 @@ public class Command_denick extends FreedomCommand
     {
         if (!plugin.esb.isEnabled())
         {
-            msg("Essentials is not enabled on this server.");
+            msg("Download Essentials to use this command loser");
             return true;
         }
 
-        FUtil.adminAction(sender.getName(), "Removing all nicknames", false);
+        FUtil.adminAction(sender.getName(), "GOOD BYE NICKNAMES", false);
 
         for (Player player : server.getOnlinePlayers())
         {

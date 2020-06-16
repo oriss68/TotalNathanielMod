@@ -14,6 +14,7 @@ public class Command_end extends FreedomCommand
     public boolean run(CommandSender sender, Player playerSender, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {
         plugin.wm.gotoWorld(playerSender, server.getWorlds().get(0).getName() + "_the_end");
+        msg("You know end portals exist, right?");
         return true;
     }
 }

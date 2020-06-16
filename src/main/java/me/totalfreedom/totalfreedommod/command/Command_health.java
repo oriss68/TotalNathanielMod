@@ -14,7 +14,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "View server health, such as ticks-per-second, memory, etc.", usage = "/<command>")
+@CommandParameters(description = "Basically, our own version of /gc and /tps", usage = "/<command>")
 public class Command_health extends FreedomCommand
 {
 

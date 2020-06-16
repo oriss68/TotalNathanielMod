@@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.BOTH)
-@CommandParameters(description = "HubWorld management stuff",
+@CommandParameters(description = "What's the point of HubWorld?",
         usage = "/<command> [time <morning | noon | evening | night> | weather <off | rain | storm>]",
         aliases = "hw,hub")
 public class Command_hubworld extends FreedomCommand
@@ -71,12 +71,12 @@ public class Command_hubworld extends FreedomCommand
 
                     if (hubWorld == null || playerSender.getWorld() == hubWorld)
                     {
-                        msg("Going to the main world.");
+                        msg("Thank god you left that pointless world.");
                         playerSender.teleport(server.getWorlds().get(0).getSpawnLocation());
                     }
                     else
                     {
-                        msg("Going to the hub world");
+                        msg("What's the point of hubworld?");
                         plugin.wm.hubworld.sendToWorld(playerSender);
                     }
 
@@ -96,7 +96,7 @@ public class Command_hubworld extends FreedomCommand
                         }
                         else
                         {
-                            msg("Invalid time of day. Can be: sunrise, noon, sunset, midnight");
+                            msg("Invalid time of day. Can be: sunrise, noon, sunset, midnight. What? You think 25:00 is a real time?");
                         }
                     }
                     else
@@ -120,7 +120,7 @@ public class Command_hubworld extends FreedomCommand
                         }
                         else
                         {
-                            msg("Invalid weather mode. Can be: off, rain, storm");
+                            msg("Invalid weather mode. Can be: off, rain, storm. What? You think it can rain meatballs?");
                         }
                     }
                     else

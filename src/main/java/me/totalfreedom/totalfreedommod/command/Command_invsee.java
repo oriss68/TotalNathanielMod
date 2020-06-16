@@ -9,7 +9,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Look into another player's inventory, or optionally take items out.", usage = "/<command> <player> [offhand | armor]", aliases = "inv,insee")
+@CommandParameters(description = "So, you want to see someone's private life and spy on their inventory? Well, this is the command for you", usage = "/<command> <player> [offhand | armor]", aliases = "inv,insee")
 public class Command_invsee extends FreedomCommand
 {
     @Override
@@ -31,15 +31,8 @@ public class Command_invsee extends FreedomCommand
 
         if (playerSender == player)
         {
-            msg("You cannot invsee yourself.");
+            msg("You cannot invsee yourself. Just press the E button man...");
             return true;
-        }
-
-        if (plugin.al.isAdmin(player) && !plugin.al.isAdmin(playerSender))
-        {
-            msg("You cannot spy on administrators.");
-            return true;
-
         }
 
         Inventory inv;
@@ -53,7 +46,7 @@ public class Command_invsee extends FreedomCommand
                     ItemStack offhand = player.getInventory().getItemInOffHand();
                     if (offhand == null)
                     {
-                        msg("That player has nothing in their offhand.");
+                        msg("That player has nothing in their offhand. Actually, they do have something, AND IT'S AIR");
                         return true;
                     }
                     Inventory inventory = server.createInventory(null, 9, player.getName() + "'s offhand");
@@ -84,7 +77,7 @@ public class Command_invsee extends FreedomCommand
                     ItemStack offhand = player.getInventory().getItemInOffHand();
                     if (offhand == null)
                     {
-                        msg("That player has nothing in their offhand.");
+                        msg("That player has nothing in their offhand. Actually, they do have something, AND IT'S AIR");
                         return true;
                     }
                     Inventory inventory = server.createInventory(null, 9, player.getName() + "'s offhand");

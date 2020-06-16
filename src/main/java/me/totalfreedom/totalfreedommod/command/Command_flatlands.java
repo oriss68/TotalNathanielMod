@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.NON_OP, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Go to the Flatlands.", usage = "/<command>")
+@CommandParameters(description = "Go to Flatlands, and then get your builds wiped and lose all of it.", usage = "/<command>")
 public class Command_flatlands extends FreedomCommand
 {
 
@@ -17,10 +17,11 @@ public class Command_flatlands extends FreedomCommand
         if (ConfigEntry.FLATLANDS_GENERATE.getBoolean())
         {
             plugin.wm.flatlands.sendToWorld(playerSender);
+            msg("Have fun! Make sure your builds don't get wiped!");
         }
         else
         {
-            msg("Flatlands is currently disabled in the TotalFreedomMod configuration.");
+            msg("Flatlands is currently disabled in the TotalFreedomMod configuration. Go yell at the server owner");
         }
         return true;
     }

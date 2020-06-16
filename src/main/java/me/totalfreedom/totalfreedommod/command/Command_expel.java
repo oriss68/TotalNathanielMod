@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Push people away from you.", usage = "/<command> [radius] [strength]")
+@CommandParameters(description = "For anti-social people.", usage = "/<command> [radius] [strength]")
 public class Command_expel extends FreedomCommand
 {
 
@@ -78,11 +78,11 @@ public class Command_expel extends FreedomCommand
 
         if (pushedPlayers.isEmpty())
         {
-            msg("No players pushed.");
+            msg("No players pushed, because you're lonely.");
         }
         else
         {
-            msg("Pushed " + pushedPlayers.size() + " players: " + StringUtils.join(pushedPlayers, ", "));
+            msg("Pushed " + pushedPlayers.size() + " players: " + StringUtils.join(pushedPlayers, ", ") + "\nYou are now anti-social");
         }
 
         return true;

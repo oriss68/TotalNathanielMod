@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Deop a player", usage = "/<command> <partialname>")
+@CommandParameters(description = "You want to de-op someone? Well...", usage = "/<command> <partialname>")
 public class Command_deop extends FreedomCommand
 {
     @Override
@@ -49,12 +49,12 @@ public class Command_deop extends FreedomCommand
         {
             if (!silent)
             {
-                FUtil.adminAction(sender.getName(), "De-opping " + StringUtils.join(matchedPlayerNames, ", "), false);
+                FUtil.adminAction(sender.getName(), "Say goodbye to your rights " + StringUtils.join(matchedPlayerNames, ", "), false);
             }
         }
         else
         {
-            msg("Either the player is already deopped, or the player could not be found.");
+            msg("This person has NO RIGHTS or is imaginary");
         }
 
         return true;

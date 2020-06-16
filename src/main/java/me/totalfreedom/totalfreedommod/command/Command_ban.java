@@ -136,11 +136,11 @@ public class Command_ban extends FreedomCommand
         {
             // Broadcast
             final StringBuilder bcast = new StringBuilder()
-                    .append("Banning: ")
+                    .append("GUYS SUSPEND ME, I BANNED ")
                     .append(username);
             if (reason != null)
             {
-                bcast.append(" - Reason: ").append(ChatColor.YELLOW).append(reason);
+                bcast.append(" - BECAUSE ").append(ChatColor.YELLOW).append(reason);
             }
             msg(sender, ChatColor.GRAY + username + " has been banned and IP is: " + StringUtils.join(ips, ", ") + " now go DDoS them");
             FUtil.adminAction(sender.getName(), String.format(bcast.toString()), true);
@@ -154,7 +154,7 @@ public class Command_ban extends FreedomCommand
             {
                 if (Ips.getIp(p).equals(Ips.getIp(player)))
                 {
-                    p.kickPlayer(ChatColor.RED + "You've been kicked because someone on your IP has been banned.");
+                    p.kickPlayer(ChatColor.RED + "You've been kicked because someone on your IP has been banned, are you two twins?");
                 }
             }
         }

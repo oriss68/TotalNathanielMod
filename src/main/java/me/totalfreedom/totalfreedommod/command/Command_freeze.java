@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Freeze/Unfreeze a specified player, or all non-admins on the server.", usage = "/<command> [target | purge]", aliases = "fr")
+@CommandParameters(description = "No more legs for you!", usage = "/<command> [target | purge]", aliases = "fr,zawarudo")
 public class Command_freeze extends FreedomCommand
 {
 
@@ -23,33 +23,33 @@ public class Command_freeze extends FreedomCommand
 
             if (!gFreeze)
             {
-                FUtil.adminAction(sender.getName(), "Disabling global player freeze", false);
-                msg("Players are now free to move.");
+                FUtil.adminAction(sender.getName(), "Zero!", false);
+                msg("Finally! They got their legs back!");
                 return true;
             }
 
-            FUtil.adminAction(sender.getName(), "Enabling global player freeze", false);
+            FUtil.adminAction(sender.getName(), "ZA WARUDO!", false);
             for (Player player : server.getOnlinePlayers())
             {
                 if (!isAdmin(player))
                 {
-                    player.sendTitle(ChatColor.RED + "You've been globally frozen.", ChatColor.YELLOW + "Please be patient and you will be unfrozen shortly.", 20, 100, 60);
-                    msg(player, "You have been globally frozen due to an OP breaking the rules, please wait and you will be unfrozen soon.", ChatColor.RED);
+                    player.sendTitle(ChatColor.RED + "ZA WARUDO!", ChatColor.YELLOW + "Well, you have to wait 9 seconds now.", 20, 100, 60);
+                    msg(player, "You have been frozen becase " + sender.getName() + " abused their commands, please spam the chat to get unfrozen", ChatColor.RED);
                 }
             }
-            msg("Players are now frozen.");
+            msg("ZA WARUDO");
 
             return true;
         }
 
         if (args[0].equals("purge"))
         {
-            FUtil.adminAction(sender.getName(), "Unfreezing all players", false);
+            FUtil.adminAction(sender.getName(), "Gave everyone their legs back", false);
             for (Player player : server.getOnlinePlayers())
             {
                 if (!isAdmin(player))
                 {
-                    player.sendTitle(ChatColor.GREEN + "You've been unfrozen.", ChatColor.YELLOW + "You may now move again.", 20, 100, 60);
+                    player.sendTitle(ChatColor.GREEN + "Fine...", ChatColor.YELLOW + "Here's your legs", 20, 100, 60);
                 }
             }
             plugin.fm.purge();
@@ -67,8 +67,8 @@ public class Command_freeze extends FreedomCommand
         final FreezeData fd = plugin.pl.getPlayer(player).getFreezeData();
         fd.setFrozen(!fd.isFrozen());
 
-        msg(player.getName() + " has been " + (fd.isFrozen() ? "frozen" : "unfrozen") + ".");
-        msg(player, "You have been " + (fd.isFrozen() ? "frozen" : "unfrozen") + ".", ChatColor.AQUA);
+        msg(player.getName() + "'s legs have been " + (fd.isFrozen() ? "stolen" : "given back") + ".");
+        msg(player, "Your legs have been " + (fd.isFrozen() ? "stolen" : "given back") + ".", ChatColor.AQUA);
 
         return true;
     }

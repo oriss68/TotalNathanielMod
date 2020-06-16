@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Obtain a fire ball", usage = "/<command>")
+@CommandParameters(description = "I'm a fireball", usage = "/<command>")
 public class Command_fireball extends FreedomCommand
 {
 
@@ -18,11 +18,11 @@ public class Command_fireball extends FreedomCommand
         if (plugin.sh.getData(playerSender).hasItem(ShopItem.FIRE_BALL))
         {
             playerSender.getInventory().addItem(plugin.sh.getFireBall());
-            msg("You have been given a Fire Ball", ChatColor.GREEN);
+            msg("You have acquired one F I R E B A L L", ChatColor.GREEN);
         }
         else
         {
-            msg("You do not own a Fire Ball! Purchase one from the shop.", ChatColor.RED);
+            msg("You're poor as fuck, and you don't own a fireball.", ChatColor.RED);
         }
         return true;
     }

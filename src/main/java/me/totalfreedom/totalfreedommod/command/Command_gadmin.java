@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH, blockHostConsole = true)
 @CommandParameters(
-        description = "Use admin commands on someone by hash. Use mode 'list' to get a player's hash. Other modes are kick, nameban, ipban, ban, op, deop, ci, fr, smite.",
+        description = "Hash stuff, okay, yeah...",
         usage = "/<command> [list | [<kick | nameban | ipban | ban | op | deop | ci | fr | smite> <targethash>] ]")
 //codebeat:disable
 //basically a deprecated command that still exists
@@ -75,7 +75,7 @@ public class Command_gadmin extends FreedomCommand
         final GadminMode mode = GadminMode.findMode(args[0].toLowerCase());
         if (mode == null)
         {
-            msg("Invalid mode: " + args[0], ChatColor.RED);
+            msg("What the hell is this mode? " + args[0] + "? Are you kidding me?", ChatColor.RED);
             return true;
         }
 
@@ -114,7 +114,7 @@ public class Command_gadmin extends FreedomCommand
 
         if (target == null)
         {
-            msg("Invalid player hash: " + args[1], ChatColor.RED);
+            msg("What kind of hash is this? " + args[1] + "? Get real hashes you loser!", ChatColor.RED);
             return true;
         }
 
@@ -122,16 +122,16 @@ public class Command_gadmin extends FreedomCommand
         {
             case KICK:
             {
-                FUtil.adminAction(sender.getName(), String.format("Kicking: %s.", target.getName()), false);
-                target.kickPlayer("Kicked by Administrator");
+                FUtil.adminAction(sender.getName(), String.format("GUYS SUSPEND ME, I KICKED %s!", target.getName()), false);
+                target.kickPlayer("Well, s/he abused his admin powers and kicked you.");
 
                 break;
             }
             case NAMEBAN:
             {
-                FUtil.adminAction(sender.getName(), String.format("Banning Name: %s.", target.getName()), true);
+                FUtil.adminAction(sender.getName(), String.format("GUYS SUSPEND ME, I BANNED %s.", target.getName()), true);
                 plugin.bm.addBan(Ban.forPlayerName(target, sender, null, null));
-                target.kickPlayer("Username banned by Administrator.");
+                target.kickPlayer("Well, s/he abused his admin powers and blocked your name.");
 
                 break;
             }
@@ -143,10 +143,10 @@ public class Command_gadmin extends FreedomCommand
                 {
                     ip = String.format("%s.%s.*.*", ip_parts[0], ip_parts[1]);
                 }
-                FUtil.adminAction(sender.getName(), String.format("Banning IP: %s.", ip), true);
+                FUtil.adminAction(sender.getName(), String.format("GUYS SUSPEND ME, I BANNED %s.", ip), true);
                 plugin.bm.addBan(Ban.forPlayerIp(ip, sender, null, null));
 
-                target.kickPlayer("IP address banned by Administrator.");
+                target.kickPlayer("Well, s/he abused his admin powers and blocked your IP");
 
                 break;
             }
@@ -158,17 +158,17 @@ public class Command_gadmin extends FreedomCommand
                 {
                     ip = String.format("%s.%s.*.*", ip_parts[0], ip_parts[1]);
                 }
-                FUtil.adminAction(sender.getName(), String.format("Banning Name: %s, IP: %s.", target.getName(), ip), true);
+                FUtil.adminAction(sender.getName(), String.format("GUYS SUSPEND ME, I BANNED: %s, AND THIS IP: %s.", target.getName(), ip), true);
 
                 plugin.bm.addBan(Ban.forPlayer(target, sender));
 
-                target.kickPlayer("IP and username banned by Administrator.");
+                target.kickPlayer("Well, s/he abused his admin powers and blocked your username and your IP");
 
                 break;
             }
             case OP:
             {
-                FUtil.adminAction(sender.getName(), String.format("Opping %s.", target.getName()), false);
+                FUtil.adminAction(sender.getName(), String.format("Uggh, OPing %s, I do this too much....", target.getName()), false);
                 target.setOp(true);
                 target.sendMessage(FreedomCommand.YOU_ARE_OP);
 
@@ -176,7 +176,7 @@ public class Command_gadmin extends FreedomCommand
             }
             case DEOP:
             {
-                FUtil.adminAction(sender.getName(), String.format("Deopping %s.", target.getName()), false);
+                FUtil.adminAction(sender.getName(), String.format("Say goodbye to your rights %s", target.getName()), false);
                 target.setOp(false);
                 target.sendMessage(FreedomCommand.YOU_ARE_NOT_OP);
 
@@ -192,9 +192,11 @@ public class Command_gadmin extends FreedomCommand
             {
                 FreezeData fd = plugin.pl.getPlayer(target).getFreezeData();
                 fd.setFrozen(!fd.isFrozen());
-
-                msg(target.getName() + " has been " + (fd.isFrozen() ? "frozen" : "unfrozen") + ".");
-                target.sendMessage(ChatColor.AQUA + "You have been " + (fd.isFrozen() ? "frozen" : "unfrozen") + ".");
+                //msg(player.getName() + "'s legs have been " + (fd.isFrozen() ? "stolen" : "given back") + ".");
+                //msg(player, "Your legs have been " + (fd.isFrozen() ? "stolen" : "given back") + ".", ChatColor.AQUA);
+                //
+                msg(target.getName() + "'s legs have been " + (fd.isFrozen() ? "stolen" : "given back") + ".");
+                target.sendMessage(ChatColor.AQUA + "Your legs have been " + (fd.isFrozen() ? "stolen" : "given back") + ".");
 
                 break;
             }
