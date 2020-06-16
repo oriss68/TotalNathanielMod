@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Spy on commands", usage = "/<command>", aliases = "commandspy")
+@CommandParameters(description = "Be a creep and spy on commands", usage = "/<command>", aliases = "commandspy")
 public class Command_cmdspy extends FreedomCommand
 {
 
@@ -19,7 +19,7 @@ public class Command_cmdspy extends FreedomCommand
         admin.setCommandSpy(!admin.getCommandSpy());
         plugin.al.save(admin);
         plugin.al.updateTables();
-        msg("CommandSpy " + (admin.getCommandSpy() ? "enabled." : "disabled."));
+        msg("Creep mode " + (admin.getCommandSpy() ? "enabled." : "disabled."));
 
         return true;
     }
