@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.BOTH)
-@CommandParameters(description = "Clears the chat for players who are not opt-out.", usage = "/<command>", aliases = "cc")
+@CommandParameters(description = "You do know people have client logs right?", usage = "/<command>", aliases = "cc")
 public class Command_clearchat extends FreedomCommand
 {
 
@@ -40,10 +40,10 @@ public class Command_clearchat extends FreedomCommand
 
                 if (!optedOut)
                 {
-                    IntStream.range(0, 100).mapToObj(i -> "").forEach(player::sendMessage);
+                    IntStream.range(0, 100).mapToObj(i -> "MEME").forEach(player::sendMessage);
                 }
             }
-            FUtil.adminAction(sender.getName(), "Cleared chat", true);
+            FUtil.adminAction(sender.getName(), "Cleared chat, you do know people have client logs, right?", true);
         }
         else if (plugin.mbl.isMasterBuilder(playerSender))
         {
