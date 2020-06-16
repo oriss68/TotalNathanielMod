@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Toggle PVP mode for everyone or a certain player.", usage = "/<command> [[-s] <player> [reason] | list | purge | all]", aliases = "pvpblock,pvpmode")
+@CommandParameters(description = "PvP can be annoying sometimes, so let's block it!", usage = "/<command> [[-s] <player> [reason] | list | purge | all]", aliases = "pvpblock,pvpmode")
 public class Command_blockpvp extends FreedomCommand
 {
 
@@ -46,7 +46,7 @@ public class Command_blockpvp extends FreedomCommand
 
         if (args[0].equals("purge"))
         {
-            FUtil.adminAction(sender.getName(), "Enabling PVP for all players.", true);
+            FUtil.adminAction(sender.getName(), "All players are now strong again", true);
             int count = 0;
             for (Player player : server.getOnlinePlayers())
             {
@@ -58,13 +58,13 @@ public class Command_blockpvp extends FreedomCommand
                 }
             }
 
-            msg("Enabled PVP for " + count + " players.");
+            msg("Made " + count + " players strong.");
             return true;
         }
 
         if (args[0].equals("all"))
         {
-            FUtil.adminAction(sender.getName(), "Disabling PVP for all non-admins", true);
+            FUtil.adminAction(sender.getName(), "YOU ARE ALL WEAKLINGS, YOU CAN'T FIGHT ANYMORE", true);
             int counter = 0;
             for (Player player : server.getOnlinePlayers())
             {
@@ -76,7 +76,7 @@ public class Command_blockpvp extends FreedomCommand
                 }
             }
 
-            msg("Disabling PVP for " + counter + " players.");
+            msg("Made " + counter + " players weak.");
             return true;
         }
 
@@ -106,28 +106,23 @@ public class Command_blockpvp extends FreedomCommand
         final FPlayer pd = plugin.pl.getPlayer(p);
         if (pd.isPvpBlocked())
         {
-            FUtil.adminAction(sender.getName(), "Enabling PVP for " + p.getName(), true);
+            FUtil.adminAction(sender.getName(), "Making " + p.getName() + " strong again", true);
             pd.setPvpBlocked(false);
-            msg("Enabling PVP  for  " + p.getName());
-            msg(p, "Your PVP have been enabled.", ChatColor.GREEN);
+            msg("Making " + p.getName() + " strong again");
+            msg(p, "You are now strong again", ChatColor.GREEN);
         }
         else
         {
-            if (plugin.al.isAdmin(p))
-            {
-                msg(p.getName() + " is an admin, and cannot have their PVP disabled.");
-                return true;
-            }
 
-            FUtil.adminAction(sender.getName(), "Disabling PVP for " + p.getName(), true);
+            FUtil.adminAction(sender.getName(), "Making " + p.getName() + " weak", true);
             pd.setPvpBlocked(true);
             if (smite)
             {
                 Command_smite.smite(sender, p, reason);
             }
 
-            msg(p, "Your PVP has been disabled.", ChatColor.RED);
-            msg("Disabled PVP for " + p.getName());
+            msg(p, "You are now weak", ChatColor.RED);
+            msg("Made " + p.getName() + " weak");
         }
         return true;
     }
