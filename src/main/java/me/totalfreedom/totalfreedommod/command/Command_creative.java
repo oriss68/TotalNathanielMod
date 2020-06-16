@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.OP, source = SourceType.BOTH)
-@CommandParameters(description = "Quickly change your own gamemode to creative, define someone's username to change theirs, or change everyone's gamemode on the server.", usage = "/<command> <-a | [partialname]>", aliases = "gmc")
+@CommandParameters(description = "Become Creative", usage = "/<command> <-a | [partialname]>", aliases = "gmc")
 public class Command_creative extends FreedomCommand
 {
 
@@ -19,12 +19,12 @@ public class Command_creative extends FreedomCommand
         {
             if (isConsole())
             {
-                sender.sendMessage("When used from the console, you must define a target player.");
+                sender.sendMessage("When you're a telnet pussy, you must define a target player.");
                 return true;
             }
 
             playerSender.setGameMode(GameMode.CREATIVE);
-            msg("Your gamemode has been set to creative.");
+            msg("You're now creative");
             return true;
         }
 
@@ -37,8 +37,8 @@ public class Command_creative extends FreedomCommand
                 targetPlayer.setGameMode(GameMode.CREATIVE);
             }
 
-            FUtil.adminAction(sender.getName(), "Changing everyone's gamemode to creative", false);
-            msg("Your gamemode has been set to creative.");
+            FUtil.adminAction(sender.getName(), "Everyone is now creative", false);
+            msg("You're now creative");
             return true;
         }
 
@@ -50,8 +50,8 @@ public class Command_creative extends FreedomCommand
             return true;
         }
 
-        msg("Setting " + player.getName() + " to game mode creative");
-        msg(player, sender.getName() + " set your game mode to creative");
+        msg("Making " + player.getName() + " creative");
+        msg(player, sender.getName() + " made you creative");
         player.setGameMode(GameMode.CREATIVE);
 
         return true;
