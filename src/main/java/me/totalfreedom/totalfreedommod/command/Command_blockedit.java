@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Restricts/unrestricts block modification abilities for everyone on the server or a certain player.", usage = "/<command> [[-s] <player> [reason] | list | purge | all]")
+@CommandParameters(description = "Playing Minecraft? Well what about NOMINE-CRAFT", usage = "/<command> [[-s] <player> [reason] | list | purge | all]")
 public class Command_blockedit extends FreedomCommand
 {
 
@@ -46,7 +46,7 @@ public class Command_blockedit extends FreedomCommand
 
         if (args[0].equals("purge"))
         {
-            FUtil.adminAction(sender.getName(), "Unblocking block modification abilities for all players.", true);
+            FUtil.adminAction(sender.getName(), "Fine, here's the real version of Minecraft.", true);
             int count = 0;
             for (final Player player : this.server.getOnlinePlayers())
             {
@@ -57,13 +57,13 @@ public class Command_blockedit extends FreedomCommand
                     ++count;
                 }
             }
-            msg("Unblocked all block modification abilities for " + count + " players.");
+            msg("Gave Minecraft back to " + count + " players.");
             return true;
         }
 
         if (args[0].equals("all"))
         {
-            FUtil.adminAction(sender.getName(), "Blocking block modification abilities for all non-admins.", true);
+            FUtil.adminAction(sender.getName(), "MINECRAFT? MORE LIKE NOMINE-CRAFT!", true);
             int counter = 0;
             for (final Player player : this.server.getOnlinePlayers())
             {
@@ -105,20 +105,15 @@ public class Command_blockedit extends FreedomCommand
         final FPlayer pd = plugin.pl.getPlayer(player2);
         if (pd.isEditBlocked())
         {
-            FUtil.adminAction(sender.getName(), "Unblocking block modification abilities for " + player2.getName(), true);
+            FUtil.adminAction(sender.getName(), "Fine " + player2.getName() + ", you can have Minecraft back", true);
             pd.setEditBlocked(false);
-            msg("Unblocking block modification abilities for " + player2.getName());
-            msg(player2, "Your block modification abilities have been restored.", ChatColor.RED);
+            msg("Gave Minecraft back to " + player2.getName());
+            msg(player2, "Here's your Minecraft", ChatColor.RED);
         }
         else
         {
-            if (plugin.al.isAdmin(player2))
-            {
-                msg(player2.getName() + " is an admin, and cannot have their block edits blocked.");
-                return true;
-            }
 
-            FUtil.adminAction(sender.getName(), "Blocking block modification abilities for " + player2.getName(), true);
+            FUtil.adminAction(sender.getName(), player2.getName() + ", MINECRAFT? MORE LIKE NOMINE-CRAFT", true);
             pd.setEditBlocked(true);
 
             if (smite)
@@ -126,8 +121,8 @@ public class Command_blockedit extends FreedomCommand
                 Command_smite.smite(sender, player2, reason);
             }
 
-            msg(player2, "Your block modification abilities have been blocked.", ChatColor.RED);
-            msg("Blocked all block modification abilities for " + player2.getName());
+            msg(player2, "Say goodbye to Minecraft!", ChatColor.RED);
+            msg("Took away Minecraft from " + player2.getName());
         }
         return true;
     }
