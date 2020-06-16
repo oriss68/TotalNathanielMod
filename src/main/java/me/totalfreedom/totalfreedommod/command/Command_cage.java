@@ -16,7 +16,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Place a cage around someone with certain blocks, or someone's player head.", usage = "/<command> <purge | <partialname> [head | block] [playername | blockname]")
+@CommandParameters(description = "IT'S TIME FOR MY SURROUNDING JISIU", usage = "/<command> <purge | <partialname> [head | block] [playername | blockname]", alias = "jail")
 public class Command_cage extends FreedomCommand
 {
 
@@ -30,7 +30,7 @@ public class Command_cage extends FreedomCommand
         String skullName = null;
         if ("purge".equals(args[0]))
         {
-            FUtil.adminAction(sender.getName(), "Uncaging all players", true);
+            FUtil.adminAction(sender.getName(), "So, this box right? Well it's GONE", true);
             for (Player player : server.getOnlinePlayers())
             {
                 final FPlayer fPlayer = plugin.pl.getPlayer(player);
@@ -50,7 +50,7 @@ public class Command_cage extends FreedomCommand
 
         if (fPlayer.getCageData().isCaged())
         {
-            FUtil.adminAction(sender.getName(), "Uncaging " + sender.getName(), true);
+            FUtil.adminAction(sender.getName(), "Fine " + sender.getName() + " I will unbox you", true);
             final FPlayer playerdata = plugin.pl.getPlayer(playerSender);
             playerdata.getCageData().setCaged(false);
             return true;
@@ -83,7 +83,7 @@ public class Command_cage extends FreedomCommand
                         outerMaterial = Material.matchMaterial(args[2]);
                         break;
                     }
-                    sender.sendMessage(ChatColor.RED + "Invalid block!");
+                    sender.sendMessage(ChatColor.RED + "Invalid block, if you really want to trap this player with this block. Yell at Mojang");
                     break;
                 }
             }
@@ -104,11 +104,11 @@ public class Command_cage extends FreedomCommand
 
         if (outerMaterial == Material.PLAYER_HEAD)
         {
-            FUtil.adminAction(sender.getName(), "Caging " + player.getName() + " in " + skullName, true);
+            FUtil.adminAction(sender.getName(), "You are now surrounded in " + skullName + ", " + player.getName() + "!", true);
         }
         else
         {
-            FUtil.adminAction(sender.getName(), "Caging " + player.getName(), true);
+            FUtil.adminAction(sender.getName(), "You are now surrounded, " + player.getName() + "!", true);
         }
         return true;
     }
