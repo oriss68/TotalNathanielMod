@@ -7,7 +7,7 @@ import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.NON_OP, source = SourceType.BOTH)
-@CommandParameters(description = "Sit in nearest minecart. If target is in a minecart already, they will disembark.", usage = "/<command> [partialname]")
+@CommandParameters(description = "Sit in nearest minecart. You know you could just click on the Minecart right?", usage = "/<command> [partialname]")
 public class Command_cartsit extends FreedomCommand
 {
 
@@ -32,7 +32,7 @@ public class Command_cartsit extends FreedomCommand
         {
             if (targetPlayer == null)
             {
-                sender.sendMessage("When used from the console, you must define a target player: /cartsit <player>");
+                sender.sendMessage("Hello Telnet pussy! You have to define a player name: /cartsit <player>");
                 return true;
             }
         }
@@ -65,10 +65,11 @@ public class Command_cartsit extends FreedomCommand
             if (nearest_cart != null)
             {
                 nearest_cart.addPassenger(targetPlayer);
+                msg("You know you could just right click on the Minecart, right?");
             }
             else
             {
-                msg("There are no empty minecarts in the target world.");
+                msg("There are no Minecarts.. so sad.");
             }
         }
 
