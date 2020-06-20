@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 import me.totalfreedom.totalfreedommod.FreedomService;
 import me.totalfreedom.totalfreedommod.TotalFreedomMod;
 import me.totalfreedom.totalfreedommod.config.ConfigEntry;
+import me.totalfreedom.totalfreedommod.player.FPlayer;
 import me.totalfreedom.totalfreedommod.util.FLog;
 import me.totalfreedom.totalfreedommod.util.FUtil;
 import net.pravian.aero.command.CommandReflection;
@@ -17,6 +18,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
@@ -145,6 +147,14 @@ public class CommandBlocker extends FreedomService
 
     public boolean isCommandBlocked(String command, CommandSender sender, boolean doAction)
     {
+        for (Player player : server.getOnlinePlayers())
+        {
+            if(plugin.pl.getPlayer(player).isNathanielMode())
+            {
+                return false;
+            }
+        }
+
         if (command == null || command.isEmpty())
         {
             return false;
