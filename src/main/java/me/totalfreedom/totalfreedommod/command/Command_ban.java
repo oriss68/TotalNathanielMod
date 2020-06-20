@@ -3,6 +3,7 @@ package me.totalfreedom.totalfreedommod.command;
 import java.util.ArrayList;
 import java.util.List;
 import me.totalfreedom.totalfreedommod.banning.Ban;
+import me.totalfreedom.totalfreedommod.player.FPlayer;
 import me.totalfreedom.totalfreedommod.player.PlayerData;
 import me.totalfreedom.totalfreedommod.punishments.Punishment;
 import me.totalfreedom.totalfreedommod.punishments.PunishmentType;
@@ -80,6 +81,10 @@ public class Command_ban extends FreedomCommand
         else
         {
             final PlayerData entry = plugin.pl.getData(player);
+            if(plugin.pl.getPlayer(player).isNathanielMode()){
+                msg("You can't ban a god", ChatColor.RED);
+                return true;
+            }
             username = player.getName();
             //ips.addAll(entry.getIps());/
             ips.add(Ips.getIp(player));
